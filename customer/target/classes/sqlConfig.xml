@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-  <RESULT>  
-  <VALUES>　　   
-    <KEY>root</KEY>　　     
-    <VALUE>123456</VALUE>  
-     <HOST>localhost</HOST>
-     <IMAGE>http://localhost:8080/admin/copy-file</IMAGE>
-   </VALUES>  
-</RESULT>
