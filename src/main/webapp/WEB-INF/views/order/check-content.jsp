@@ -168,6 +168,100 @@
 				document.getElementById("profile").value = ''
 				document.getElementById("goods").value = ''
 			});
+			$("#btn3")
+			.click(
+				function () {
+					var excdate = $("#excdate").val();
+					var facname = $("#facname").val();
+					var facaddress = $("#facaddress").val();
+					var facman = $("#facman").val();
+					var factel = $("#factel").val();
+					var profile = $("#profile").val();
+					var goods = $("#goods").val();
+					var type = $("#select").val();
+					var goodsType = $("#goodsselect").val();
+
+					console.log(excdate + "\t"+ facname+ "\t"+facaddress+ "\t"+facman+ "\t"+factel+ "\t"+profile+ "\t"+goods+ "\t"+type+ "\t"+goodsType)
+					var file_obj = document.getElementById('afile').files[0];
+				       var fd = new FormData();
+			            fd.append('excdate', excdate)
+			            fd.append('facname', facname);
+			            fd.append("facaddress",facaddress );
+			            fd.append("facman", facman);
+			            fd.append("factel", factel);
+			            fd.append( "profile", profile);
+			            fd.append("goods",goods );
+			            fd.append("type", type );
+			            fd.append("goodsType", goodsType );
+			            fd.append("file", file_obj );
+			            fd.append("post_type",'temp');//按钮的请求类型
+					
+					$.ajax({
+						//几个参数需要注意一下
+						url: "${pageContext.request.contextPath}/cusInsertOrder",//url
+						type: "POST",//方法类型
+						async: false,//同步需要等待服务器返回数据后再执行后面的两个函数，success和error。如果设置成异步，那么可能后面的success可能执行后还是没有收到消息。
+						dataType: "json",//预期服务器返回的数据类型
+						cache: false,
+						data: fd,//这个是发送给服务器的数据
+					    processData:false,  //tell jQuery not to process the data
+		                contentType: false,  //tell jQuery not to set contentType
+						success: function (result) {
+							console.log(result);//打印服务端返回的数据(调试用)
+							if (result.resultCode == 200) {
+								//跳转到首页	$('.hxy-alert').removeClass('hxy-alert-success')
+								$('.hxy-alert').html('草稿保存成功').addClass('hxy-alert-success').show().delay(2000).fadeOut();
+								document.getElementById("excdate").value = ''
+								document.getElementById("facname").value = ''
+								document.getElementById("facaddress").value = ''
+								document.getElementById("facman").value = ''
+								document.getElementById("factel").value = ''
+								document.getElementById("profile").value = ''
+								document.getElementById("goods").value = ''
+								document.getElementById("afile").value = ''
+							} else if (result.resultCode == 601) {
+								//	$(this).remove();
+								$('.hxy-alert')
+									.removeClass(
+										'hxy-alert-success')
+								$('.hxy-alert')
+									.html(
+										'密码错误')
+									.addClass(
+										'hxy-alert-warning')
+									.show()
+									.delay(
+										2000)
+									.fadeOut();
+								document
+									.getElementById("passwd").value = ''
+							} else if (result.resultCode == 404) {
+								//	$(this).remove();
+								$('.hxy-alert')
+									.removeClass(
+										'hxy-alert-success')
+								$('.hxy-alert')
+									.html(
+										'手机号未注册')
+									.addClass(
+										'hxy-alert-warning')
+									.show()
+									.delay(
+										2000)
+									.fadeOut();
+							} else if (result.resultCode == 604) {
+								//跳转到首页
+								window.location.href = 'login';
+							}
+							;
+						},
+						error: function () {
+							//console.log(data);
+							$('.hxy-alert').removeClass('hxy-alert-success')
+							$('.hxy-alert').html('检查网络是否连接').addClass('hxy-alert-warning').show().delay(2000).fadeOut();
+						}
+					});
+				});
 
 
 		});
@@ -350,6 +444,9 @@
 								</button>
 								<button type="reset" id="btn2" class="btn btn-danger btn-sm">
 									<i class="fa fa-ban"></i> 重置
+								</button>
+								<button  id="btn3" class="btn btn-danger btn-sm">
+									<i class="fa fa-ban"></i> 草稿
 								</button>
 							</div>
 						</div>

@@ -43,7 +43,8 @@ public class UserController {
 			logger.warn("传入的是一个null");
 		}
 
-//		logger.info("login Post tel is:" + tel + "Post password is:" + password);
+		// logger.info("login Post tel is:" + tel + "Post password is:" +
+		// password);
 		UserService userService = new UserService();
 		if (tel != null && password != null && !"".equals(tel) && !"".equals(password)) {
 
@@ -279,7 +280,7 @@ public class UserController {
 
 			} else
 				session.removeAttribute("user");
-//	https://blog.csdn.net/u010143291/article/details/51597507 
+			// https://blog.csdn.net/u010143291/article/details/51597507
 		}
 		return "login";
 	}

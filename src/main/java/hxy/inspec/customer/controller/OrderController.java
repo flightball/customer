@@ -68,6 +68,7 @@ public class OrderController {
 			String fileName = null;
 			String fileUuidName = null;
 			boolean flag = false;
+			String post_type;
 			try {
 
 //				excdate = request.getParameter("excdate").trim();// 执行日期
@@ -144,7 +145,12 @@ public class OrderController {
 						case "goodsType":
 							goodsType = value;
 							break;
-
+						case "post_type":
+							if("temp".equals(value)){
+								status=Configuration.BILL_TEMP;
+							}else if ("temp".equals(value)) {
+								status=Configuration.BILL_PAY;
+							}
 						default:
 							break;
 						}
@@ -193,7 +199,8 @@ public class OrderController {
 				Float money = Float.parseFloat(user.getCusMoney());
 //				Float cost = Float.parseFloat("")
 				float costs = 100;
-				if (money > costs) {
+				if (status==Configuration.BILL_TEMP);
+				else if (money > costs) {
 					// 订单正常提交，正常扣费
 					status = Configuration.BILL_PAY;// 1.提交成功 2.正在验货员正在接单 3.验货员已经出发，4.报告撰写中，5，已完成
 					money = money - costs;

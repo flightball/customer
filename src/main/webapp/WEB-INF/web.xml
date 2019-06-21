@@ -143,6 +143,14 @@
 		<servlet-name>orders-unfinished</servlet-name>
 		<url-pattern>/orders-unfinished</url-pattern>
 	</servlet-mapping>
+	<!-- <servlet>
+		<servlet-name>orders-temp</servlet-name>
+		<jsp-file>/WEB-INF/views/order/orders-temp.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>orders-temp</servlet-name>
+		<url-pattern>/orders-temp</url-pattern>
+	</servlet-mapping> -->
 
 
 

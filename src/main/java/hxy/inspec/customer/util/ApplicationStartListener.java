@@ -193,6 +193,25 @@ public class ApplicationStartListener implements ServletContextListener, Servlet
 			logger.error("数据库连接失败！");
 		}
 		
+		String sql5 = "create table IF NOT EXISTS  praise (id int not null primary key  AUTO_INCREMENT, `pariseContent` VARCHAR(500) NULL, `serviceLevel` INT(11) default '0',`orderid` INT(11) )default charset=utf8; ";
+		PreparedStatement preparedStatement5 = ConnectionUtil.getPreparedStatement(connection, sql5);
+		try {
+			logger.info("尝试新建praise表");
+			preparedStatement5.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.error("数据库连接失败！");
+		}
+		
+		String sql6 = "create table IF NOT EXISTS  summarizedinfo (id int not null primary key  AUTO_INCREMENT, `provisions` float default '0', `doneOrdersSum` BIGINT default '0',`undoneOrderSum` BIGINT default '0', `refusedOrderSum` BIGINT default '0',`totalOrderNum` BIGINT default '0')default charset=utf8; ";
+		PreparedStatement preparedStatement6 = ConnectionUtil.getPreparedStatement(connection, sql6);
+		try {
+			logger.info("尝试新建praise表");
+			preparedStatement6.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.error("数据库连接失败！");
+		}
 		
 		
 		/*

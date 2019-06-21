@@ -17,4 +17,5 @@ public class Configuration {
 	public  static final int BILL_REPORT_VERIFIED = 8;//验货员已接单
 	public  static final int BILL_REPORT_PASSED = 9;//验货员已接单
 	public  static final int BILL_REPORT_UNPASSED = 10;//验货员已接单
+	public  static final int BILL_TEMP = 11;//验货员已接单
 }

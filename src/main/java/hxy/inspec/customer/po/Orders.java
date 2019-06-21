@@ -10,6 +10,7 @@ public class Orders {
 	private String qualId;//质检员信息
 	private String excedate;//质检日期
 	private String date;//下单日期
+	
 	private String factoryname;
 	private String factoryaddress;
 	private String factoryman;
@@ -17,16 +18,25 @@ public class Orders {
 	private String profile;
 	private String file;//这个文件是客户下单的时候提交的
 	private String fileuuid;
+	
 	private String reportfile;
 	private String reportfileuuid;
+	
 	private int status;
+	
 	private String type;//验货类型，不同的类型有不同的价格
+	
 	private String fee;//付款多少，或者是是否付款。
 	private String cost;
 	private String othercost;
 	private String profit;
+	
 	private String goods;//产品名称
 	private String goodsType;//产品类型
+	
+	
+	
+	
 	
 	
 	//下面应该设置全局静态变量，全局设置？
@@ -60,6 +70,8 @@ public class Orders {
 		case Configuration.BILL_REPORT_PASSED:
 			value="报告审核通过";
 			break;
+		case Configuration .BILL_TEMP:
+			value="草稿";
 		default:
 			value="未知";
 			break;

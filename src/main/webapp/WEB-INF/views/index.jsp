@@ -147,6 +147,7 @@
                                     <li><a href="orders-finished" target="myiframe">已完成</a></li>
                                     <li><a href="orders-unfinished" target="myiframe">未完成</a></li>
                                     <li><a href="orders-cancel" target="myiframe">已取消</a></li>
+                                    <li><a href="orders-draft" target="myiframe">草稿</a></li>
                             </ul>
                         </div>
                     </li>
@@ -637,8 +638,9 @@
                 //   for (var i = 0; i < li.length; i++) li[i].className = '';
                 //  this.className = 'active'
                 for (var i = 0; i < li.length; i++)  removeClass(li[i], 'active');
-                addClass(this, 'active')
+                addClass(this, 'active');
             }
+            
     </script>
 </body>
 
